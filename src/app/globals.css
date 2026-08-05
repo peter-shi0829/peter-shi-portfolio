@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f4f3ee;
+  --ink: #14140f;
+  --graphite: #55534c;
+  --line: #d3d0c7;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-graphite: var(--graphite);
+  --color-line: var(--line);
+  --font-sans: var(--font-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), Helvetica, Arial, sans-serif;
+}
+
+/* Big thin editorial headings */
+.heading {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+  line-height: 0.95;
+}
+
+/* Extra-thin display (cover, thanks) */
+.heading-thin {
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+}
+
+/* Oversized slide numbers */
+.slide-no {
+  font-weight: 300;
+  line-height: 0.8;
+  letter-spacing: -0.01em;
+}
+
+/* Tiny uppercase letter-spaced labels */
+.label {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.6rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* Small sentence-case body copy */
+.copy {
+  font-size: 0.78rem;
+  line-height: 1.65;
+  font-weight: 400;
+  color: var(--graphite);
+}
+
+.section-frame {
+  scroll-margin-top: 64px;
+}
+
+/* Cursor image-trail collage on the landing hero */
+.trail-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.trail-img {
+  position: absolute;
+  width: clamp(144px, 15.6vw, 222px);
+  height: auto;
+  transform: translate(-50%, -50%) scale(0.5) rotate(var(--r, 0deg));
+  opacity: 0;
+  border-radius: 12px;
+  will-change: transform, opacity;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.4);
+}
+
+.trail-img.is-active {
+  animation: trail-pop 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes trail-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5) rotate(var(--r, 0deg));
+  }
+  14% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(var(--r, 0deg));
+  }
+  68% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.08) rotate(var(--r, 0deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trail-img {
+    display: none;
+  }
+}
+
+/* Jump gallery: selected screen + card deck */
+.jg-fade {
+  animation: jg-fade-up 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.jg-fade-delay {
+  animation-delay: 70ms;
+}
+
+@keyframes jg-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.jg-card {
+  transition:
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease,
+    box-shadow 300ms ease;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jg-fade {
+    animation: none;
+  }
+  .jg-card {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
