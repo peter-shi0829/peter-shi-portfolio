@@ -2,6 +2,7 @@ import Image from "next/image";
 import Nav from "@/components/Nav";
 import Cover from "@/components/Cover";
 import JumpGallery from "@/components/JumpGallery";
+import NbaGallery from "@/components/NbaGallery";
 
 export default function Home() {
   return (
@@ -363,7 +364,7 @@ function Portfolio() {
       href: "#project-nba",
       title: "NBA Game Predictor",
       kind: "Machine-learning web app",
-      stack: "Python · scikit-learn · GitHub Pages",
+      stack: "Python · scikit-learn · Next.js",
       img: "/portfolio/nba-cover.jpg",
       fit: "object-contain p-8",
       bg: "#ffffff",
@@ -428,7 +429,7 @@ function Projects() {
       image: "/jump.jpg",
       bg: "#111d3f",
       fit: "cover" as const,
-      gallery: true,
+      gallery: "jump" as const,
       copy:
         "A social iOS app for rating the concerts you have been to, in the spirit of Beli for food. You log a show, rank it into a personal 0 to 10 list through quick head-to-head comparisons, post photos, follow friends, and find upcoming shows through a personalized explore feed. The ranking engine slots each new concert with a binary-search comparison flow and re-spaces neighboring scores on every insert.",
       tags: ["React Native", "Expo", "TypeScript", "Supabase"],
@@ -441,15 +442,15 @@ function Projects() {
       label: "Project / 2",
       title: "NBA Game Predictor",
       subtitle: "Machine-learning web app",
-      image: "/nba.jpg",
+      image: "/nba/logo.png",
       bg: "#0e0f13",
-      fit: "contain" as const,
-      gallery: false,
+      fit: "cover" as const,
+      gallery: "nba" as const,
       copy:
-        "A web app that predicts the winner of upcoming NBA games with a logistic-regression model trained on ten-plus seasons of team stats, then explains the reasoning behind each pick in plain language. Features are built leakage-safe using only data available before tip-off. The model reaches 66.4% accuracy on held-out games against a 55% always-pick-home baseline, and the static site refreshes daily.",
-      tags: ["Python", "scikit-learn", "nba_api", "GitHub Pages"],
+        "An advanced NBA statistics site with a scenario engine. It projects game outcomes and full player stat lines, and it does it for matchups that have never happened, so you can move a star onto another roster, sit someone, or cut their minutes and watch the projection move. Every number carries a measured confidence band, and the model is scored in public against games it never trained on, hitting 64.3% winner accuracy against a 55.0% always-pick-home baseline. Features are built leakage-safe using only data available before tip-off.",
+      tags: ["Python", "scikit-learn", "Next.js", "Vercel"],
       status: "Live site",
-      href: "https://peter-shi0829.github.io/nba-predictor/",
+      href: "https://hardwood-lab-coral.vercel.app",
     },
   ];
   return (
@@ -465,27 +466,18 @@ function Projects() {
             id={p.anchor}
             className="section-frame grid items-center gap-8 md:grid-cols-2 md:gap-12"
           >
-            {p.gallery ? (
+            {p.gallery === "jump" ? (
               <JumpGallery
                 logo={p.image}
                 bg={p.bg}
                 className={i % 2 === 1 ? "md:order-2" : ""}
               />
             ) : (
-              <div
-                className={`relative aspect-[4/3] overflow-hidden rounded-xl ${
-                  i % 2 === 1 ? "md:order-2" : ""
-                }`}
-                style={{ background: p.bg }}
-              >
-                <Image
-                  src={p.image}
-                  alt={`${p.title} preview`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 520px"
-                  className={p.fit === "cover" ? "object-cover" : "object-contain p-6"}
-                />
-              </div>
+              <NbaGallery
+                logo={p.image}
+                bg={p.bg}
+                className={i % 2 === 1 ? "md:order-2" : ""}
+              />
             )}
             <div>
               <div className="flex items-baseline justify-between gap-4">
