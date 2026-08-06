@@ -144,7 +144,7 @@ export default function JumpGallery({
               <div>
                 <h3 className="heading text-2xl md:text-3xl">Jump</h3>
                 <p className="label mt-1 text-graphite">
-                  Social concert-rating iOS app
+                  Social concert-rating <span className="keep-case">iOS</span> app
                 </p>
               </div>
               <button
@@ -166,7 +166,7 @@ export default function JumpGallery({
               </button>
             </div>
 
-            <div className="grid flex-1 gap-8 overflow-y-auto px-6 py-7 lg:grid-cols-[minmax(0,200px)_minmax(0,1fr)_auto] lg:items-center lg:gap-10">
+            <div className="grid flex-1 gap-8 overflow-y-auto px-6 py-7 lg:min-h-[508px] lg:grid-cols-[minmax(0,200px)_minmax(0,1fr)_auto] lg:items-center lg:gap-10">
               {/* Selected screen */}
               <div key={`phone-${current.key}`} className="jg-fade mx-auto w-[190px] lg:mx-0 lg:w-full">
                 <div className="relative aspect-[9/19.5] w-full rounded-[1.7rem] bg-[#0b0b0d] p-[3px] shadow-2xl">

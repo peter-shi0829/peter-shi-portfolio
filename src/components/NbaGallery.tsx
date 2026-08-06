@@ -77,13 +77,13 @@ export default function NbaGallery({
           setActive(0);
           setOpen(true);
         }}
-        aria-label="View NBA Game Predictor screens"
+        aria-label="View Hardwood Labs screens"
         className={`group relative block aspect-[4/3] w-full overflow-hidden rounded-xl ${className}`}
         style={{ background: bg }}
       >
         <Image
           src={logo}
-          alt="NBA Game Predictor"
+          alt="Hardwood Labs"
           fill
           sizes="(max-width: 768px) 100vw, 520px"
           className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
@@ -120,7 +120,7 @@ export default function NbaGallery({
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8"
           role="dialog"
           aria-modal="true"
-          aria-label="NBA Game Predictor screens"
+          aria-label="Hardwood Labs screens"
         >
           <div
             className="absolute inset-0 bg-black/70 backdrop-blur-sm"
@@ -130,7 +130,7 @@ export default function NbaGallery({
           <div className="relative flex max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-2xl bg-paper shadow-2xl">
             <div className="flex items-start justify-between gap-4 border-b border-line px-6 py-4">
               <div>
-                <h3 className="heading text-2xl md:text-3xl">NBA Game Predictor</h3>
+                <h3 className="heading text-2xl md:text-3xl">Hardwood Labs</h3>
                 <p className="label mt-1 text-graphite">Machine-learning web app</p>
               </div>
               <button
@@ -145,15 +145,15 @@ export default function NbaGallery({
               </button>
             </div>
 
-            <div className="grid flex-1 gap-8 overflow-y-auto px-6 py-7 lg:grid-cols-[1.55fr_1fr] lg:items-center lg:gap-10">
+            <div className="grid flex-1 gap-8 overflow-y-auto px-6 py-7 lg:min-h-[508px] lg:grid-cols-[1.55fr_1fr] lg:items-stretch lg:gap-10">
               {/* Selected screen */}
               <div
                 key={`shot-${current.key}`}
-                className="jg-fade relative aspect-[16/9.2] w-full overflow-hidden rounded-xl bg-[#0b0c10] ring-1 ring-ink/10"
+                className="jg-fade relative aspect-[16/9.2] w-full self-center overflow-hidden rounded-xl bg-[#0b0c10] ring-1 ring-ink/10"
               >
                 <Image
                   src={current.img}
-                  alt={`NBA Game Predictor ${current.label} screen`}
+                  alt={`Hardwood Labs ${current.label} screen`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 640px"
                   className="object-cover object-top"
@@ -161,14 +161,14 @@ export default function NbaGallery({
                 />
               </div>
 
-              <div>
+              <div className="flex h-full flex-col">
                 <div key={`copy-${current.key}`} className="jg-fade jg-fade-delay">
                   <h4 className="heading text-2xl sm:text-3xl">{current.label}</h4>
                   <p className="copy mt-3 max-w-md">{current.desc}</p>
                 </div>
 
-                {/* Card deck */}
-                <div className="mt-7 flex flex-col items-center gap-4 lg:items-start">
+                {/* Card deck, pinned to the bottom so it never shifts */}
+                <div className="mt-auto flex flex-col items-center gap-4 pt-7">
                   <div className="jg-deck relative h-[150px] w-full max-w-[330px]">
                     {SCREENS.map((s, i) => {
                       const rel = (i - active + SCREENS.length) % SCREENS.length;

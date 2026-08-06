@@ -65,6 +65,11 @@ body {
   color: var(--graphite);
 }
 
+/* Preserves casing inside uppercase labels, e.g. "iOS" */
+.keep-case {
+  text-transform: none;
+}
+
 .section-frame {
   scroll-margin-top: 64px;
 }

@@ -28,6 +28,23 @@ function Rule() {
   return <div className="h-px w-full bg-line" />;
 }
 
+/* Renders text inside an uppercase label while preserving the casing of "iOS" */
+function LabelText({ children }: { children: string }) {
+  return (
+    <>
+      {children.split(/(iOS)/g).map((part, i) =>
+        part === "iOS" ? (
+          <span key={i} className="keep-case">
+            iOS
+          </span>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /* INTRODUCTION                                                       */
 /* ------------------------------------------------------------------ */
@@ -362,7 +379,7 @@ function Portfolio() {
     },
     {
       href: "#project-nba",
-      title: "NBA Game Predictor",
+      title: "Hardwood Labs",
       kind: "Machine-learning web app",
       stack: "Python · scikit-learn · Next.js",
       img: "/portfolio/nba-cover.jpg",
@@ -440,7 +457,7 @@ function Projects() {
       no: "08",
       anchor: "project-nba",
       label: "Project / 2",
-      title: "NBA Game Predictor",
+      title: "Hardwood Labs",
       subtitle: "Machine-learning web app",
       image: "/nba/logo.png",
       bg: "#0e0f13",
@@ -482,7 +499,9 @@ function Projects() {
             <div>
               <div className="flex items-baseline justify-between gap-4">
                 <span className="label text-graphite">{p.label}</span>
-                <span className="label text-graphite">{p.subtitle}</span>
+                <span className="label text-graphite">
+                  <LabelText>{p.subtitle}</LabelText>
+                </span>
               </div>
               <h3 className="heading mt-2 text-5xl md:text-6xl">{p.title}</h3>
               <p className="copy mt-5">{p.copy}</p>
