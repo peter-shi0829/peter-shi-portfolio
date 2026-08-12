@@ -85,47 +85,52 @@ export default function JumpGallery({
 
   return (
     <>
-      <button
-        type="button"
-        onClick={openModal}
-        aria-label="View Jump app screens"
-        className={`group relative block aspect-[4/3] w-full overflow-hidden rounded-xl ${className}`}
-        style={{ background: bg }}
-      >
-        <Image
-          src={logo}
-          alt="Jump logo"
-          fill
-          sizes="(max-width: 768px) 100vw, 520px"
-          className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-        />
+      <div className={className}>
+        <button
+          type="button"
+          onClick={openModal}
+          aria-label="View Jump app screens"
+          className="group relative block aspect-[4/3] w-full overflow-hidden rounded-xl"
+          style={{ background: bg }}
+        >
+          <Image
+            src={logo}
+            alt="Jump logo"
+            fill
+            sizes="(max-width: 768px) 100vw, 520px"
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
 
-        {/* Hover preview: a peek at the deck */}
-        <span className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[#0a1330]/85 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
-          <span className="flex items-end gap-2">
-            {SCREENS.slice(0, 3).map((s, idx) => (
-              <span
-                key={s.key}
-                className="block w-[52px] overflow-hidden rounded-lg border border-white/20 shadow-lg sm:w-[62px]"
-                style={{
-                  transform: `rotate(${(idx - 1) * 5}deg) translateY(${
-                    idx === 1 ? "-6px" : "0"
-                  })`,
-                }}
-              >
-                <Image
-                  src={s.img}
-                  alt=""
-                  width={124}
-                  height={269}
-                  className="h-auto w-full object-cover"
-                />
-              </span>
-            ))}
+          {/* Hover preview: a peek at the deck */}
+          <span className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-3 bg-[#0a1330]/85 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+            <span className="flex items-end gap-2">
+              {SCREENS.slice(0, 3).map((s, idx) => (
+                <span
+                  key={s.key}
+                  className="block w-[52px] overflow-hidden rounded-lg border border-white/20 shadow-lg sm:w-[62px]"
+                  style={{
+                    transform: `rotate(${(idx - 1) * 5}deg) translateY(${
+                      idx === 1 ? "-6px" : "0"
+                    })`,
+                  }}
+                >
+                  <Image
+                    src={s.img}
+                    alt=""
+                    width={124}
+                    height={269}
+                    className="h-auto w-full object-cover"
+                  />
+                </span>
+              ))}
+            </span>
+            <span className="label text-white/90">View app screens</span>
           </span>
-          <span className="label text-white/90">View app screens</span>
-        </span>
-      </button>
+        </button>
+        <p className="label mt-3 text-center text-graphite">
+          Click the image above to explore the app
+        </p>
+      </div>
 
       {open && (
         <div
@@ -144,7 +149,8 @@ export default function JumpGallery({
               <div>
                 <h3 className="heading text-2xl md:text-3xl">Jump</h3>
                 <p className="label mt-1 text-graphite">
-                  Social concert-rating <span className="keep-case">iOS</span> app
+                  Social concert-rating <span className="keep-case">iOS</span>{" "}
+                  app
                 </p>
               </div>
               <button
@@ -168,7 +174,10 @@ export default function JumpGallery({
 
             <div className="grid flex-1 gap-8 overflow-y-auto px-6 py-7 lg:min-h-[508px] lg:grid-cols-[minmax(0,200px)_minmax(0,1fr)_auto] lg:items-center lg:gap-10">
               {/* Selected screen */}
-              <div key={`phone-${current.key}`} className="jg-fade mx-auto w-[190px] lg:mx-0 lg:w-full">
+              <div
+                key={`phone-${current.key}`}
+                className="jg-fade mx-auto w-[190px] lg:mx-0 lg:w-full"
+              >
                 <div className="relative aspect-[9/19.5] w-full rounded-[1.7rem] bg-[#0b0b0d] p-[3px] shadow-2xl">
                   <div className="relative h-full w-full overflow-hidden rounded-[1.55rem] bg-white">
                     <Image
@@ -184,7 +193,10 @@ export default function JumpGallery({
               </div>
 
               {/* Name + description */}
-              <div key={`copy-${current.key}`} className="jg-fade jg-fade-delay">
+              <div
+                key={`copy-${current.key}`}
+                className="jg-fade jg-fade-delay"
+              >
                 <h4 className="heading text-2xl sm:text-3xl lg:text-4xl">
                   {current.label}
                 </h4>
@@ -243,16 +255,29 @@ export default function JumpGallery({
                 <div className="flex items-center gap-3">
                   <button
                     type="button"
-                    onClick={() => setActive((v) => (v - 1 + SCREENS.length) % SCREENS.length)}
+                    onClick={() =>
+                      setActive(
+                        (v) => (v - 1 + SCREENS.length) % SCREENS.length,
+                      )
+                    }
                     aria-label="Previous screen"
                     className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/25 text-ink transition-colors hover:bg-ink hover:text-paper active:scale-95"
                   >
-                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
                       <path d="M15 6l-6 6 6 6" />
                     </svg>
                   </button>
                   <span className="label text-graphite">
-                    {String(active + 1).padStart(2, "0")} / {String(SCREENS.length).padStart(2, "0")}
+                    {String(active + 1).padStart(2, "0")} /{" "}
+                    {String(SCREENS.length).padStart(2, "0")}
                   </span>
                   <button
                     type="button"
@@ -260,7 +285,15 @@ export default function JumpGallery({
                     aria-label="Next screen"
                     className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/25 text-ink transition-colors hover:bg-ink hover:text-paper active:scale-95"
                   >
-                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
                       <path d="M9 6l6 6-6 6" />
                     </svg>
                   </button>
