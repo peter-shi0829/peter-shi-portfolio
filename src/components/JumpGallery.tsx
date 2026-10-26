@@ -7,46 +7,58 @@ type Screen = { key: string; label: string; desc: string; img: string };
 
 const SCREENS: Screen[] = [
   {
-    key: "feed",
-    label: "Feed",
-    desc: "Ratings and photos from everyone you follow, newest first. Each post carries the artist, the venue, the date, and the score that person gave the night, so you can see what your friends actually thought before you commit to a ticket. Photos and video from the show sit inline, and a caught-up divider marks where you left off last time.",
-    img: "/jump/feed.jpg",
-  },
-  {
     key: "explore",
     label: "Explore",
-    desc: "Upcoming shows near you, ordered against your own taste profile. Search any artist, then narrow by distance, genre, and price. Rows are grouped by genre with a near-you shelf and a new-artists-for-you shelf, both built from the genres and artists you rate most, so the further you get into your list the sharper the recommendations become.",
+    desc: "Upcoming shows near you, grouped into photo-led rows by genre with a near-you shelf underneath. Each card carries the artist, the date, and the venue, and the location chip defaults to where you are with a radius you can widen. Search any artist from the top, narrow by filters, or hit see all on a genre to browse the whole shelf. Show data comes from the Ticketmaster API and the rows are ordered against what you rate most.",
     img: "/jump/explore.jpg",
   },
   {
-    key: "explore-setlist",
+    key: "concert",
     label: "Upcoming Show",
-    desc: "Open any upcoming show and you get the setlist the artist has been playing on this tour, so you can hear what you are walking into before you buy. Every track has a preview you can play right there, which turns a lineup you half recognize into songs you actually know by the time you show up. Book tickets hands you straight to the seller to buy, and want to go saves the show to your list. Setlists come from the Setlist.fm API and show data from Ticketmaster.",
-    img: "/jump/explore-setlist.jpg",
+    desc: "Open an upcoming show and you get the setlist the artist played at their last tour stop, pulled from the Setlist.fm API, so you know what you are walking into before you buy. Every song has a 30 second preview you can play right there. Book tickets hands you to the seller, and want to go saves the show to your list.",
+    img: "/jump/concert.jpg",
+  },
+  {
+    key: "feed",
+    label: "Feed",
+    desc: "Ratings and photos from everyone on Jump or just the people you follow, newest first. Each post carries the artist, the venue, the date, who they went with, their notes, and the score they gave the night. Photos and video from the show sit inline, and you can like, comment, share, or add the concert to your own list. Scores stay hidden until an account has rated five shows, so a number always comes from a list with some shape to it.",
+    img: "/jump/feed.jpg",
+  },
+  {
+    key: "add",
+    label: "Add a Concert",
+    desc: "Search any artist and the results split into upcoming shows from Ticketmaster and past shows from Setlist.fm, each with the venue and the date. That split is what lets you rate a show from years ago as easily as the one you saw last night. Location and filter chips narrow the list when an artist has played a lot of nights.",
+    img: "/jump/add.jpg",
   },
   {
     key: "rate",
     label: "Rate a Show",
-    desc: "Rating starts with a gut reaction, liked, fine, or disliked, instead of a number nobody can calibrate. Jump then runs a short series of head-to-head comparisons against concerts you have already rated, and a binary search slots the new show into your ranking. The 0 to 10 score falls out of where it lands, and neighboring scores re-space themselves on every insert.",
+    desc: "Rating starts with a gut reaction, liked, fine, or disliked, instead of a number nobody can calibrate. Then you can tag who you went with, jot notes, and attach photos or a video, all of it optional and skippable. Continue moves you into the comparisons.",
     img: "/jump/rate.jpg",
+  },
+  {
+    key: "compare",
+    label: "Head to Head",
+    desc: "Jump asks which show was better, this one or that one, against concerts you have already rated. A binary search picks each matchup so a handful of taps is enough to slot the new show into your ranking, and too close to call is a real answer. The 0 to 10 score falls out of where it lands rather than being typed in.",
+    img: "/jump/compare.jpg",
+  },
+  {
+    key: "ranking",
+    label: "My Ranking",
+    desc: "Every show you have scored, in order, from 10.0 at the top down. Neighboring scores re-space themselves on every insert so the list stays honest as it grows. Sort highest, lowest, or A to Z, and tap any row to revisit the night or rerank it if it has climbed or slipped since.",
+    img: "/jump/ranking.jpg",
   },
   {
     key: "leaderboard",
     label: "Leaderboard",
-    desc: "A running count of who has been to the most shows, with friends, city, and global scopes. Your own row stays pinned to the bottom so you always know where you stand without hunting for yourself in the list. It turns going to concerts into something you and your friends can quietly compete over across a season.",
+    desc: "You and the people you follow, ranked by shows rated, with each person's most recent show beside their name. Ties share a rank. Your own row stays pinned to the bottom so you always know where you stand without hunting for yourself in the list.",
     img: "/jump/leaderboard.jpg",
   },
   {
     key: "profile",
     label: "Profile",
-    desc: "Your ranked concert list, your stats, and how often you actually go. Concerts over time charts attendance by day, month, or year, so a heavy festival summer is obvious at a glance. My ranking holds every show you have scored in order, and want to go keeps the ones you are still chasing.",
+    desc: "Your concert life in one place: concerts, followers, and following up top, then chips for your top genre, your average score, and the year you started. My ranking and want to go open as full lists. A private account toggle, friend discovery, and preferences sit in the middle, and a map of everywhere you have been counts your shows and cities underneath.",
     img: "/jump/profile.jpg",
-  },
-  {
-    key: "past-setlist",
-    label: "Past Show",
-    desc: "For a concert you have already been to, the full setlist is waiting when you open it. You can walk the night back song by song and hit the ones that stuck, the encore you did not expect, the track that everyone screamed. Playing a song pulls the memory straight back, and you can rerank the concert from here if it has climbed or slipped since. Setlist data is pulled from the Setlist.fm API and stays attached to the show.",
-    img: "/jump/past-setlist.jpg",
   },
 ];
 
@@ -223,9 +235,9 @@ export default function JumpGallery({
                         className="jg-card absolute left-1/2 top-1/2 w-[142px] overflow-hidden rounded-xl border border-black/10 bg-white shadow-xl md:w-[162px]"
                         style={{
                           zIndex: SCREENS.length - rel,
-                          transform: `translate(-50%, -50%) translateX(${pos * 22}px) translateY(${
+                          transform: `translate(-50%, -50%) translateX(${pos * 16}px) translateY(${
                             rel * 4
-                          }px) rotate(${pos * 2.4}deg) scale(${isActive ? 1.06 : 0.88})`,
+                          }px) rotate(${pos * 2}deg) scale(${isActive ? 1.06 : 0.88})`,
                           opacity: isActive ? 1 : 0.45,
                         }}
                       >
