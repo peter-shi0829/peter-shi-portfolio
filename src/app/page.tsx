@@ -112,7 +112,6 @@ function Introduction() {
               className="object-cover"
             />
           </div>
-          <span className="slide-no text-5xl md:text-6xl">02</span>
         </div>
       </div>
     </section>
@@ -205,7 +204,6 @@ function Education() {
   return (
     <section id="education" className="section-frame border-b border-line py-16 md:py-24">
       <div className="flex items-start gap-6">
-        <span className="slide-no text-5xl md:text-7xl">04</span>
         <h2 className="heading text-5xl md:text-7xl">Education</h2>
       </div>
 
@@ -382,7 +380,6 @@ function Experience() {
   return (
     <section id="experience" className="section-frame border-b border-line py-16 md:py-24">
       <div className="flex items-start gap-6">
-        <span className="slide-no text-5xl md:text-7xl">05</span>
         <h2 className="heading text-5xl md:text-7xl">Experience</h2>
       </div>
 
@@ -476,7 +473,6 @@ function Portfolio() {
   return (
     <section id="portfolio" className="section-frame border-b border-line py-16 md:py-24">
       <div className="flex items-start gap-6">
-        <span className="slide-no text-5xl md:text-7xl">06</span>
         <h2 className="heading text-5xl md:text-7xl">Portfolio</h2>
       </div>
 
@@ -523,7 +519,6 @@ function Portfolio() {
 function Projects() {
   const projects = [
     {
-      no: "07",
       anchor: "project-jump",
       label: "Project / 1",
       title: "Jump",
@@ -539,7 +534,6 @@ function Projects() {
       href: null as string | null,
     },
     {
-      no: "08",
       anchor: "project-nba",
       label: "Project / 2",
       title: "Hardwood Labs",
@@ -564,7 +558,7 @@ function Projects() {
       <div className="flex flex-col gap-16 md:gap-24">
         {projects.map((p, i) => (
           <article
-            key={p.no}
+            key={p.anchor}
             id={p.anchor}
             className="section-frame grid items-center gap-8 md:grid-cols-2 md:gap-12"
           >
@@ -597,8 +591,7 @@ function Projects() {
                   </span>
                 ))}
               </div>
-              <div className="mt-6 flex items-end justify-between border-t border-line pt-4">
-                <span className="slide-no text-5xl md:text-6xl">{p.no}</span>
+              <div className="mt-6 flex items-end justify-end border-t border-line pt-4">
                 {p.href ? (
                   <a
                     href={p.href}
