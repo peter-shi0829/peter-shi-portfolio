@@ -91,7 +91,7 @@ export default function Cover() {
       <div ref={layerRef} className="trail-layer" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto flex min-h-[82vh] max-w-6xl flex-col items-center justify-center gap-6 px-6 py-16 text-center">
-        <span className="label text-paper/60">Developer &amp; Builder</span>
+        <span className="label text-paper/60">Product Manager &amp; Builder</span>
         <h1 className="heading-thin text-[18vw] leading-none md:text-[9rem]">
           Portfolio
         </h1>

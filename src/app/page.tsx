@@ -64,7 +64,7 @@ function Introduction() {
         </div>
         <div>
           <p className="label text-ink">Peter Shi</p>
-          <p className="label mt-1 text-graphite">Developer & Builder</p>
+          <p className="label mt-1 text-graphite">Product Manager & Builder</p>
           <div className="mt-5 space-y-4">
             <p className="copy">
               Hey! Welcome to my portfolio, and thank you for checking it out.
@@ -145,12 +145,12 @@ function About() {
       </div>
       <div className="mx-auto mt-10 max-w-2xl space-y-4 text-left">
         <p className="copy">
-          Hi! My name is Peter and I am a junior studying Finance and Information
-          Systems at the Kelley School of Business with a minor in Data Science. I
-          am passionate about customer centric product work and love tackling
-          unique problems with innovative solutions. I&apos;ve been able to do this
-          through working at large corporations to start-ups to clubs at IU. Super
-          excited to see what is next in store.
+          Hi! My name is Peter and I am a junior studying Information Systems and
+          Business Analytics at the Kelley School of Business with a minor in
+          Mathematics. I am passionate about customer centric product work and
+          love tackling unique problems with innovative solutions. I&apos;ve been
+          able to do this through product roles at Mastercard, a Y Combinator
+          startup, and clubs at IU. Super excited to see what is next in store.
         </p>
         <p className="copy">
           Outside school, I&apos;ve grown up playing basketball since I was six and
@@ -185,8 +185,8 @@ function About() {
 /* ------------------------------------------------------------------ */
 function Education() {
   const detail = [
-    { k: "Majors", v: "Finance and Information Systems" },
-    { k: "Minor", v: "Data Science" },
+    { k: "Majors", v: "Information Systems and Business Analytics" },
+    { k: "Minor", v: "Mathematics" },
     { k: "GPA", v: "3.90 / 4.00" },
   ];
   const honors = [
@@ -194,6 +194,7 @@ function Education() {
     "Kelley Honors Program",
     "Dean's Scholarship",
     "Vanguard Scholarship",
+    "Kelley Consulting Workshop (1 of 31 selected)",
   ];
   const clubs = [
     { name: "812 Consulting", role: "Project Manager" },
@@ -276,32 +277,42 @@ function Education() {
 /* ------------------------------------------------------------------ */
 /* EXPERIENCE                                                         */
 /* ------------------------------------------------------------------ */
+type Entry = {
+  co: string;
+  logo: string | null;
+  note: string | null;
+  role: string;
+  dates: string;
+  place: string;
+  points: string[];
+};
+
 function Experience() {
-  const roles = [
+  const roles: Entry[] = [
     {
       co: "Mastercard",
       logo: "/logos/mastercard.png",
-      note: null as string | null,
+      note: null,
       role: "Product Management Intern",
       dates: "June 2026 - August 2026",
       place: "St. Louis, MO",
       points: [
         "Deployed an AI customer support agent with 500+ monthly users in Copilot Studio, cutting response time in half.",
-        "Built a Jira capacity-analysis tool to fix sprint overcommitment, lifting sprint completion from 70% to 85%.",
-        "Developed an adoption dashboard flagging lagging accounts for the rollout of Mastercard Settings to 695 customers, working with customer and product delivery to reach 60% adoption within six months.",
+        "Built a Jira capacity-analysis tool to fix sprint overcommitment, lifting sprint completion from 68% to 87%.",
+        "Assisted the rollout of Mastercard's services customization portal to 700 banks by building a dashboard that flags lagging accounts early, then creating an implementation roadmap with Customer Success to reach 60% adoption within six months.",
       ],
     },
     {
       co: "Hemut",
       logo: "/logos/hemut.png",
       note: "Y Combinator X25",
-      role: "Product & Growth",
+      role: "Product Lead",
       dates: "July 2025 - April 2026",
       place: "Los Angeles, CA",
       points: [
-        "Led 6 engineers to ship an MVP with real-time Mapbox integration in 6 weeks, securing $750k in client investment.",
-        "Drove automation of TMS data entry, reducing client operations time by 60% against manual workflows.",
-        "Defined the dataflow architecture for a new digital wallet feature, shaping design decisions that raised sales conversion 40%.",
+        "Owned product strategy for a $1.2M ARR startup building transportation management systems (TMS) for trucking carriers.",
+        "Led 6 engineers to ship a minimum viable product of the TMS in 6 weeks, securing $750k in client investment.",
+        "Created a sales dashboard that showed 60% of deals died at the security deposit, then built a digital wallet feature that bypassed the deposit and raised sales conversion 32%.",
       ],
     },
     {
@@ -312,10 +323,59 @@ function Experience() {
       dates: "June 2025 - August 2025",
       place: "Memphis, TN",
       points: [
+        "Executed market research on 2 consulting projects, including a banking app redesign and a packaging go-to-market strategy.",
         "Led UX research with 30 credit union app users in Dovetail, surfacing the pain points that shaped a full redesign.",
         "Directed a mobile app redesign in Figma from that research, reaching 95% satisfaction in a 200-customer pilot.",
-        "Spearheaded integration of an AI voice agent with the client's loan system, cutting call volume 35% through smart routing.",
+        "Built a P&L model projecting $150M in additional profit to guide the packaging client's expansion into CPG.",
       ],
+    },
+  ];
+
+  const leadership: Entry[] = [
+    {
+      co: "812 Consulting",
+      logo: null,
+      note: null,
+      role: "Project Manager",
+      dates: "September 2024 - Present",
+      place: "Bloomington, IN",
+      points: [
+        "Led a team of 4 analysts on a 12-week engagement with a $460M professional sports and entertainment company.",
+        "Developed press outreach targeting reporters in 4 high-priority audience segments, reaching a 5M+ potential audience.",
+        "Designed and pitched 3 low-cost patches, leading the client to invest $10k to bring one to market.",
+      ],
+    },
+    {
+      co: "Asian American Association",
+      logo: null,
+      note: null,
+      role: "Treasurer",
+      dates: "August 2025 - May 2026",
+      place: "Bloomington, IN",
+      points: [
+        "Tripled the funds of a 600-member club through TicketSpice ticket sales and membership dues verification.",
+        "Collaborated with Union Board to manage a $5k budget for a multi-college cultural event with 1,200+ attendees.",
+        "Hosted the annual holiday event, acting on past feedback to sell $26k in tickets.",
+      ],
+    },
+  ];
+
+  const skills = [
+    {
+      k: "Languages and data",
+      v: "Python (pandas, scikit-learn), SQL, TypeScript, JavaScript, Java, React, Node.js, HTML/CSS",
+    },
+    {
+      k: "Product",
+      v: "Roadmapping, Prioritization, User Stories, A/B Testing, User Research, Competitive Analysis, Agile, Scrum",
+    },
+    {
+      k: "AI and ML",
+      v: "Model Training and Evaluation, Data Pipelines, LLM Agents, Responsible AI, Copilot Studio, Claude Code",
+    },
+    {
+      k: "Tools and platforms",
+      v: "Jira, Figma, Dovetail, Miro, Lucidchart, GitHub, Power BI, Supabase/Postgres, Microsoft Suite",
     },
   ];
 
@@ -328,38 +388,63 @@ function Experience() {
 
       <div className="mt-12 flex flex-col">
         {roles.map((r) => (
-          <article
-            key={r.co}
-            className="grid gap-4 border-t border-line py-8 md:grid-cols-[minmax(0,260px)_minmax(0,1fr)] md:gap-10"
-          >
-            <div>
-              <div className="relative mb-4 h-14 w-14 overflow-hidden rounded-xl">
-                <Image
-                  src={r.logo}
-                  alt={`${r.co} logo`}
-                  fill
-                  sizes="56px"
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="heading text-2xl md:text-3xl">{r.co}</h3>
-              {r.note && <p className="label mt-1 text-graphite">{r.note}</p>}
-              <p className="copy mt-2 text-ink">{r.role}</p>
-              <p className="label mt-3 text-graphite">{r.dates}</p>
-              <p className="label mt-1 text-graphite">{r.place}</p>
-            </div>
-            <ul className="flex flex-col gap-3 md:pt-1">
-              {r.points.map((p, i) => (
-                <li key={i} className="flex gap-3">
-                  <span aria-hidden="true" className="mt-[0.55rem] h-px w-4 shrink-0 bg-ink/40" />
-                  <span className="copy">{p}</span>
-                </li>
-              ))}
-            </ul>
-          </article>
+          <ExperienceEntry key={r.co} entry={r} />
         ))}
       </div>
+
+      <p className="label mt-16 text-graphite">Leadership and involvement</p>
+      <div className="mt-4 flex flex-col">
+        {leadership.map((r) => (
+          <ExperienceEntry key={r.co} entry={r} />
+        ))}
+      </div>
+
+      <p className="label mt-16 text-graphite">Skills</p>
+      <dl className="mt-4 border-t border-line">
+        {skills.map((sk) => (
+          <div
+            key={sk.k}
+            className="grid gap-1 border-b border-line py-4 md:grid-cols-[minmax(0,260px)_minmax(0,1fr)] md:gap-10"
+          >
+            <dt className="label text-graphite">{sk.k}</dt>
+            <dd className="copy">{sk.v}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
+  );
+}
+
+function ExperienceEntry({ entry: r }: { entry: Entry }) {
+  return (
+    <article className="grid gap-4 border-t border-line py-8 md:grid-cols-[minmax(0,260px)_minmax(0,1fr)] md:gap-10">
+      <div>
+        {r.logo && (
+          <div className="relative mb-4 h-14 w-14 overflow-hidden rounded-xl">
+            <Image
+              src={r.logo}
+              alt={`${r.co} logo`}
+              fill
+              sizes="56px"
+              className="object-cover"
+            />
+          </div>
+        )}
+        <h3 className="heading text-2xl md:text-3xl">{r.co}</h3>
+        {r.note && <p className="label mt-1 text-graphite">{r.note}</p>}
+        <p className="copy mt-2 text-ink">{r.role}</p>
+        <p className="label mt-3 text-graphite">{r.dates}</p>
+        <p className="label mt-1 text-graphite">{r.place}</p>
+      </div>
+      <ul className="flex flex-col gap-3 md:pt-1">
+        {r.points.map((p, i) => (
+          <li key={i} className="flex gap-3">
+            <span aria-hidden="true" className="mt-[0.55rem] h-px w-4 shrink-0 bg-ink/40" />
+            <span className="copy">{p}</span>
+          </li>
+        ))}
+      </ul>
+    </article>
   );
 }
 
@@ -448,8 +533,8 @@ function Projects() {
       fit: "cover" as const,
       gallery: "jump" as const,
       copy:
-        "A social iOS app for rating the concerts you have been to, in the spirit of Beli for food. You log a show, rank it into a personal 0 to 10 list through quick head-to-head comparisons, post photos, follow friends, and find upcoming shows through a personalized explore feed. The ranking engine slots each new concert with a binary-search comparison flow and re-spaces neighboring scores on every insert.",
-      tags: ["React Native", "Expo", "TypeScript", "Supabase"],
+        "A social iOS app for rating the concerts you have been to, in the spirit of Beli for food. You log a show, rank it into a personal 0 to 10 list through quick head-to-head comparisons, post photos, follow friends, and find upcoming shows through a personalized explore feed powered by the Ticketmaster and Setlist.fm APIs. New users get a guided tour on first login to drive activation, and the product has been iterated with 100 beta testers through structured trials across 30+ builds.",
+      tags: ["React Native", "Expo", "Supabase", "Ticketmaster API", "Setlist.fm API"],
       status: "Live in TestFlight beta",
       href: null as string | null,
     },
@@ -464,8 +549,8 @@ function Projects() {
       fit: "cover" as const,
       gallery: "nba" as const,
       copy:
-        "An advanced NBA statistics site with a scenario engine. It projects game outcomes and full player stat lines, and it does it for matchups that have never happened, so you can move a star onto another roster, sit someone, or cut their minutes and watch the projection move. Every number carries a measured confidence band, and the model is scored in public against games it never trained on, hitting 64.3% winner accuracy against a 55.0% always-pick-home baseline. Features are built leakage-safe using only data available before tip-off.",
-      tags: ["Python", "scikit-learn", "Next.js", "Vercel"],
+        "An advanced NBA statistics site with a scenario engine. It projects game outcomes and full player stat lines, and it does it for matchups that have never happened, so you can move a star onto another roster, sit someone, or cut their minutes and watch the projection move. The pandas and scikit-learn pipeline trains on 273,000 player-games across ten seasons, and the model is scored in public against games it never trained on, hitting 64.3% winner accuracy against a 55.0% always-pick-home baseline. Every projection ships with a confidence range so users know which stats to trust.",
+      tags: ["Python", "pandas", "scikit-learn", "Next.js", "Tailwind CSS"],
       status: "Live site",
       href: "https://hardwood-lab-coral.vercel.app",
     },
